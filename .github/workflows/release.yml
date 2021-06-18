@@ -1,6 +1,6 @@
 on:
-  push:
-    tags: true # Push events to matching *, i.e. 1.0, 20.15.10
+  release:
+    types: [created]
 
 name: Create Release
 
@@ -8,14 +8,16 @@ jobs:
   release:
     name: Create Release
     runs-on: ubuntu-latest
+    permissions: 
+      contents: read
+      packages: write 
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with: # 用
-          node-version: '16.x'
-      - uses: borales/actions-yarn@v2.0.0
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          cmd: install
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: yarn
       - name: Get yarn cache
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -29,8 +31,6 @@ jobs:
             ${{ runner.os }}-yarn-
       - uses: borales/actions-yarn@v2.0.0
         env:
-          GITHUB_USER_EMAIL: 649076408@qq.com
-          GITHUB_USER_NAME: iq9891
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           PUBLISH_NPM_CLI: yarn
