@@ -37,6 +37,19 @@ const cwd = process.cwd();
 const libDir = getProjectPath('lib');
 const esDir = getProjectPath('es');
 
+function reportError(errorTip, suggestTip) {
+  console.log(chalk.blue.bgRed.bold('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'));
+  console.log();
+  if (errorTip) {
+    console.log(chalk.blue.bgRed.bold(`-> ${errorTip}`));
+  }
+  if (suggestTip) {
+    console.log(chalk.blue.bgRed.bold(`-> ${suggestTip}`));
+  }
+  console.log();
+  console.log(chalk.blue.bgRed.bold('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'));
+}
+
 function dist(done) {
   rimraf.sync(path.join(cwd, 'dist'));
   process.env.RUN_ENV = 'PRODUCTION';
@@ -207,14 +220,41 @@ function compile(modules) {
 function tag() {
   console.log('tagging');
   const { version } = packageJson;
+  if (!process.env.GITHUB_USER_EMAIL) {
+    console.log('no GitHub token found, skip');
+    reportError(
+      `\`process.env.GITHUB_USER_EMAIL\` does not exist`,
+      `Please set \`process.env.GITHUB_USER_EMAIL\``,
+    );
+    done(1);
+    return;
+  }
+  if (!process.env.GITHUB_USER_NAME) {
+    console.log('no GitHub token found, skip');
+    reportError(
+      `\`process.env.GITHUB_USER_NAME\` does not exist`,
+      `Please set \`process.env.GITHUB_USER_NAME\``,
+    );
+    done(1);
+    return;
+  }
+  if (!process.env.GITHUB_TOKEN) {
+    console.log('no GitHub token found, skip');
+    reportError(
+      `\`process.env.GITHUB_TOKEN\` does not exist`,
+      `Please set \`process.env.GITHUB_TOKEN\``,
+    );
+    done(1);
+    return;
+  }
   execSync(`git config --global user.email ${process.env.GITHUB_USER_EMAIL}`);
   execSync(`git config --global user.name ${process.env.GITHUB_USER_NAME}`);
   execSync(`git tag ${version}`);
   execSync(
-    `git push https://${process.env.GITHUB_TOKEN}@github.com/vueComponent/ant-design-vue.git ${version}:${version}`,
+    `git push https://${process.env.GITHUB_TOKEN}@github.com/fe6/water-pro.git ${version}:${version}`,
   );
   execSync(
-    `git push https://${process.env.GITHUB_TOKEN}@github.com/vueComponent/ant-design-vue.git master:master`,
+    `git push https://${process.env.GITHUB_TOKEN}@github.com/fe6/water-pro.git master:master`,
   );
   console.log('tagged');
 }
@@ -226,11 +266,11 @@ function githubRelease(done) {
   ];
   console.log('creating release on GitHub');
   if (!process.env.GITHUB_TOKEN) {
-    console.log('no GitHub token found, skip');
+    reportError('no GitHub token found, skip');
     return;
   }
   if (!changlogFiles.every(file => fs.existsSync(file))) {
-    console.log('no changelog found, skip');
+    reportError('no changelog found, skip');
     return;
   }
   const github = new Octokit({
@@ -263,7 +303,7 @@ function githubRelease(done) {
       done();
     })
     .catch(err => {
-      console.log(err);
+      reportError(err);
     });
 }
 
@@ -310,7 +350,6 @@ function publish(tagString, done) {
 function pub(done) {
   const notOk = !packageJson.version.match(/^\d+\.\d+\.\d+$/);
   let tagString;
-  console.log(tagString, notOk, 'notOk');
   if (argv['npm-tag']) {
     tagString = argv['npm-tag'];
   }
@@ -331,12 +370,12 @@ function pub(done) {
 }
 
 gulp.task('compile-with-es', done => {
-  console.log('[Parallel] Compile to es...');
+  console.log('[water tool] Compile to es...');
   compile(false).on('finish', done);
 });
 
 gulp.task('compile-with-lib', done => {
-  console.log('[Parallel] Compile to js...');
+  console.log('[water tool] Compile to js...');
   compile().on('finish', done);
 });
 
@@ -369,59 +408,71 @@ gulp.task(
 gulp.task(
   'pub-with-ci',
   gulp.series(done => {
+    if (!process.env.GITHUB_TOKEN) {
+      reportError(
+        `\`process.env.GITHUB_TOKEN\` does not exist`,
+        `Please set \`process.env.GITHUB_TOKEN\``,
+      );
+      done(1);
+      return;
+    }
     if (!process.env.NPM_TOKEN) {
       console.log('no NPM token found, skip');
-    } else {
-      const github = new Octokit({
-        auth: process.env.GITHUB_TOKEN,
-      });
-      const [_, owner, repo] = execSync('git remote get-url origin') // eslint-disable-line
-        .toString()
-        .match(/github.com[:/](.+)\/(.+)\.git/);
-      const getLatestRelease = github.repos.getLatestRelease({
-        owner,
-        repo,
-      });
-      const listCommits = github.repos.listCommits({
-        owner,
-        repo,
-        per_page: 1,
-      });
-      Promise.all([getLatestRelease, listCommits]).then(([latestRelease, commits]) => {
-        const preVersion = latestRelease.data.tag_name;
-        const { version } = packageJson;
-        const [_, newVersion] = commits.data[0].commit.message.trim().match(/bump (.+)/) || []; // eslint-disable-line
-        if (
-          compareVersions(version, preVersion) === 1 &&
-          newVersion &&
-          newVersion.trim() === version
-        ) {
-          // eslint-disable-next-line no-unused-vars
-          runCmd('npm', ['run', 'pub'], code => {
-            done();
-          });
-        } else {
-          console.log('donot need publish' + version);
-        }
-      });
+      reportError(
+        `\`process.env.NPM_TOKEN\` does not exist`,
+        `Please set \`process.env.NPM_TOKEN\``,
+      );
+      done(1);
+      return;
     }
+    const github = new Octokit({
+      auth: process.env.GITHUB_TOKEN,
+    });
+    const [_, owner, repo] = execSync('git remote get-url origin') // eslint-disable-line
+      .toString()
+      .match(/github.com[:/](.+)\/(.+)\.git/);
+    const getLatestRelease = github.repos.getLatestRelease({
+      owner,
+      repo,
+    });
+    const listCommits = github.repos.listCommits({
+      owner,
+      repo,
+      per_page: 1,
+    });
+    Promise.all([getLatestRelease, listCommits]).then(([latestRelease, commits]) => {
+      const preVersion = latestRelease.data.tag_name;
+      const { version } = packageJson;
+      const [_, newVersion] = commits.data[0].commit.message.trim().match(/bump (.+)/) || []; // eslint-disable-line
+      if (
+        compareVersions(version, preVersion) === 1 &&
+        newVersion &&
+        newVersion.trim() === version
+      ) {
+        // eslint-disable-next-line no-unused-vars
+        runCmd('npm', ['run', 'pub'], code => {
+          done();
+        });
+      } else {
+        reportError(
+          'donot need publish' + version
+        );
+      }
+    });
   }),
 );
 
 gulp.task(
   'guard',
   gulp.series(done => {
-    function reportError() {
-      console.log(chalk.bgRed('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'));
-      console.log(chalk.bgRed('!! `npm publish` is forbidden for this package. !!'));
-      console.log(chalk.bgRed('!! Use `npm run pub` instead.        !!'));
-      console.log(chalk.bgRed('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'));
-    }
     const npmArgs = getNpmArgs();
     if (npmArgs) {
       for (let arg = npmArgs.shift(); arg; arg = npmArgs.shift()) {
         if (/^pu(b(l(i(sh?)?)?)?)?$/.test(arg) && npmArgs.indexOf('--with-antd-tools') < 0) {
-          reportError();
+          reportError(
+            `\`npm publish or yarn publish\` is forbidden for this package.`,
+            `Use \`npm run pub or yarn pub\` instead.`,
+          );
           done(1);
           return;
         }
