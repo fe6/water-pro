@@ -5,7 +5,7 @@ on:
     types: [created]
 
 jobs:
-  lint:
+  release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -14,6 +14,9 @@ jobs:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
       - uses: borales/actions-yarn@v2.0.0
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
         with:
           cmd: install
       - name: Get yarn cache
@@ -27,6 +30,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - uses: borales/actions-yarn@v2.0.0
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
