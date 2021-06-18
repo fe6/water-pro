@@ -38,7 +38,6 @@ jobs:
           cmd: pub-with-ci
       - name: Create Release for Tag
         id: release_tag
-        uses: iq9891
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
