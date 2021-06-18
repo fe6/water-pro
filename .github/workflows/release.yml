@@ -36,11 +36,3 @@ jobs:
           PUBLISH_NPM_CLI: yarn
         with:
           cmd: pub-with-ci
-      - name: Create Release for Tag
-        id: release_tag
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          body: |
-            Please refer to [CHANGELOG.zh-CN.md](https://github.com/fe6/water-pro/blob/next/CHANGELOG.zh-CN.md) for details.
