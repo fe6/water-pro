@@ -17,7 +17,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '16.x'
-        with:
           cmd: install
       - name: Get yarn cache
         id: yarn-cache
@@ -31,11 +30,10 @@ jobs:
             ${{ runner.os }}-yarn-
       - uses: borales/actions-yarn@v2.0.0
       - uses: actions/setup-node@v1
-        with:
-          node-version: '16.x'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           PUBLISH_NPM_CLI: yarn
         with:
           cmd: pub-with-ci
+          node-version: '16.x'
