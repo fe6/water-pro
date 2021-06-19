@@ -13,3 +13,8 @@ jobs:
       with:
         node-version: '16'
     - run: yarn install
+    - run: yarn pub-with-ci
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        PUBLISH_NPM_CLI: 'yarn'
