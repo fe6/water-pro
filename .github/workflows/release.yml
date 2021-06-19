@@ -18,12 +18,9 @@ jobs:
           node-version: '16'
           registry-url: 'https://registry.npmjs.org'
 
+      - name: yarn
+        run: yarn --version
       - name: Install JS dependencies
-        run: yarn install
-
-      - name: Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          PUBLISH_NPM_CLI: 'yarn'
-        run: yarn pub-with-ci
+        run: pwd
+      - name: ls
+        run: ls
