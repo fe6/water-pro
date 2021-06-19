@@ -418,11 +418,9 @@ gulp.task(
       );
       process.exit(1);
     }
-    const [_, owner, repo] = execSync('git remote get-url origin') // eslint-disable-line
-      .toString()
-      .trim()
-      .match(/github.com[:/](.+)\/(.+)\.git/);
-    console.log(_, owner, repo, 9999)
+    const gitlink = execSync('git remote get-url origin').toString().trim(); // eslint-disable-line
+    console.log(gitlink, typeof gitlink,9999);
+    console.log(gitlink.match(/github.com[:/](.+)\/(.+)\.git/),8888)
     done();
   }),
 );
