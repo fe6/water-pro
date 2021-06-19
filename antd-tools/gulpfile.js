@@ -425,42 +425,69 @@ gulp.task(
       done(1);
       return;
     }
-    const github = new Octokit({
-      auth: process.env.GITHUB_TOKEN,
-    });
     const [_, owner, repo] = execSync('git remote get-url origin') // eslint-disable-line
-      .toString()
-      .match(/github.com[:/](.+)\/(.+)\.git/);
-    const getLatestRelease = github.repos.getLatestRelease({
-      owner,
-      repo,
-    });
-    const listCommits = github.repos.listCommits({
-      owner,
-      repo,
-      per_page: 1,
-    });
-    Promise.all([getLatestRelease, listCommits]).then(([latestRelease, commits]) => {
-      const preVersion = latestRelease.data.tag_name;
-      const { version } = packageJson;
-      const [_, newVersion] = commits.data[0].commit.message.trim().match(/bump (.+)/) || []; // eslint-disable-line
-      if (
-        compareVersions(version, preVersion) === 1 &&
-        newVersion &&
-        newVersion.trim() === version
-      ) {
-        // eslint-disable-next-line no-unused-vars
-        runCmd('npm', ['run', 'pub'], code => {
-          done();
-        });
-      } else {
-        reportError(
-          'donot need publish' + version
-        );
-      }
-    });
+    .toString()
+    .match(/github.com[:/](.+)\/(.+)\.git/);
+    console.log(_, owner, repo, 888);
+    done();
   }),
 );
+// gulp.task(
+//   'pub-with-ci',
+//   gulp.series(done => {
+//     if (!process.env.GITHUB_TOKEN) {
+//       reportError(
+//         `\`process.env.GITHUB_TOKEN\` does not exist`,
+//         `Please set \`process.env.GITHUB_TOKEN\``,
+//       );
+//       done(1);
+//       return;
+//     }
+//     if (!process.env.NPM_TOKEN) {
+//       console.log('no NPM token found, skip');
+//       reportError(
+//         `\`process.env.NPM_TOKEN\` does not exist`,
+//         `Please set \`process.env.NPM_TOKEN\``,
+//       );
+//       done(1);
+//       return;
+//     }
+//     const github = new Octokit({
+//       auth: process.env.GITHUB_TOKEN,
+//     });
+//     const [_, owner, repo] = execSync('git remote get-url origin') // eslint-disable-line
+//       .toString()
+//       .match(/github.com[:/](.+)\/(.+)\.git/);
+//     const getLatestRelease = github.repos.getLatestRelease({
+//       owner,
+//       repo,
+//     });
+//     const listCommits = github.repos.listCommits({
+//       owner,
+//       repo,
+//       per_page: 1,
+//     });
+//     Promise.all([getLatestRelease, listCommits]).then(([latestRelease, commits]) => {
+//       const preVersion = latestRelease.data.tag_name;
+//       const { version } = packageJson;
+//       const [_, newVersion] = commits.data[0].commit.message.trim().match(/bump (.+)/) || []; // eslint-disable-line
+//       if (
+//         compareVersions(version, preVersion) === 1 &&
+//         newVersion &&
+//         newVersion.trim() === version
+//       ) {
+//         // eslint-disable-next-line no-unused-vars
+//         runCmd('npm', ['run', 'pub'], code => {
+//           done();
+//         });
+//       } else {
+//         reportError(
+//           'donot need publish' + version
+//         );
+//       }
+//     });
+//   }),
+// );
 
 gulp.task(
   'guard',
