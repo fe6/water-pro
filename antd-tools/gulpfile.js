@@ -418,6 +418,10 @@ gulp.task(
       );
       process.exit(1);
     }
+    const [_, owner, repo] = execSync('git remote get-url origin') // eslint-disable-line
+      .toString()
+      .match(/github.com[:/](.+)\/(.+)\.git/);
+    console.log(_, owner, repo, 88888)
     done();
   }),
 );
