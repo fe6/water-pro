@@ -12,13 +12,9 @@ jobs:
         with:
           node-version: '16'
           registry-url: 'https://registry.npmjs.org'
-
-      - uses: actions/checkout@v1
-    
-      - uses: c-hive/gha-yarn-cache@v2
-
-      - name: Install JS dependencies
-        run: yarn install
-
-      - name: Release
-        run: yarn pub-with-ci
+      - run: yarn install
+      - run: yarn pub-with-ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          PUBLISH_NPM_CLI: yarn
