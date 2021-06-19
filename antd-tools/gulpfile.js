@@ -402,7 +402,22 @@ gulp.task(
 gulp.task(
   'pub-with-ci',
   gulp.series(done => {
-    console.log(process.env.GITHUB_TOKEN);
+    console.log(process.env.GITHUB_TOKEN, 'github');
+    if (!process.env.GITHUB_TOKEN) {
+      reportError(
+        `\`process.env.GITHUB_TOKEN\` does not exist`,
+        `Please set \`process.env.GITHUB_TOKEN\``,
+      );
+      process.exit(1);
+    }
+    console.log(process.env.NPM_TOKEN, 'npm');
+    if (!process.env.NPM_TOKEN) {
+      reportError(
+        `\`process.env.NPM_TOKEN\` does not exist`,
+        `Please set \`process.env.NPM_TOKEN\``,
+      );
+      process.exit(1);
+    }
     done();
   }),
 );
