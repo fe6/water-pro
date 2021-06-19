@@ -8,28 +8,17 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
           registry-url: 'https://registry.npmjs.org'
-      - uses: bahmutov/npm-install@v1
-        with:
-          install-command: yarn
-      - name: Get yarn cache
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
 
-      - uses: actions/cache@v1
-        with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-      - uses: borales/actions-yarn@v2.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          PUBLISH_NPM_CLI: yarn
-        with:
-          cmd: pub-with-ci
+      - uses: actions/checkout@v1
+    
+      - uses: c-hive/gha-yarn-cache@v2
+
+      - name: Install JS dependencies
+        run: yarn install
+
+      - name: Release
+        run: yarn pub-with-ci
