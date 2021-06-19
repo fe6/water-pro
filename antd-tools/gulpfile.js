@@ -454,6 +454,61 @@ gulp.task(
 );
 
 gulp.task(
+  'tag-ci',
+  gulp.series(done => {
+    if (!process.env.GITHUB_TOKEN) {
+      reportError(
+        `\`process.env.GITHUB_TOKEN\` does not exist`,
+        `Please set \`process.env.GITHUB_TOKEN\``,
+      );
+      process.exit(1);
+    }
+    if (!process.env.NPM_TOKEN) {
+      reportError(
+        `\`process.env.NPM_TOKEN\` does not exist`,
+        `Please set \`process.env.NPM_TOKEN\``,
+      );
+      process.exit(1);
+    }
+    const github = new Octokit({
+      auth: process.env.GITHUB_TOKEN,
+    });
+    const [_, owner, repo] = execSync('git remote get-url origin') // eslint-disable-line
+      .toString()
+      .match(/github.com[:/](.+)\/(.+)/);
+    const getLatestRelease = github.repos.getLatestRelease({
+      owner,
+      repo,
+    });
+    const listCommits = github.repos.listCommits({
+      owner,
+      repo,
+      per_page: 1,
+    });
+    const writePackageJson = (wholeVersion) => {
+      console.log(chalk.greenBright.bold('开始修改 package.json 文件'))
+      packageJson.version = wholeVersion;
+      try {
+        fs.writeFileSync('./package.json', JSON.stringify(packageJson));
+        console.log(chalk.greenBright.bold('修改 package.json 文件完毕， version 修改为：' + cbDataPackage.version))
+        execSync('git add .');
+        execSync(`git commit -a -m 'release($npm): ${wholeVersion}'`);
+      } catch(err) {
+        reportError(err);
+        process.exit(1);
+      }
+    }
+    Promise.all([getLatestRelease, listCommits]).then(([latestRelease, commits]) => {
+      const preVersion = latestRelease.data.tag_name;
+      const { version } = packageJson;
+      if (compareVersions(version, preVersion) == -1) {
+        writePackageJson(preVersion);
+      }
+    });
+  }),
+);
+
+gulp.task(
   'guard',
   gulp.series(done => {
     const npmArgs = getNpmArgs();
