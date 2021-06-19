@@ -402,7 +402,6 @@ gulp.task(
 gulp.task(
   'pub-with-ci',
   gulp.series(done => {
-    console.log(process.env.GITHUB_TOKEN, 'github');
     if (!process.env.GITHUB_TOKEN) {
       reportError(
         `\`process.env.GITHUB_TOKEN\` does not exist`,
@@ -410,7 +409,6 @@ gulp.task(
       );
       process.exit(1);
     }
-    console.log(process.env.NPM_TOKEN, 'npm');
     if (!process.env.NPM_TOKEN) {
       reportError(
         `\`process.env.NPM_TOKEN\` does not exist`,
@@ -418,10 +416,40 @@ gulp.task(
       );
       process.exit(1);
     }
-    const gitlink = execSync('git remote get-url origin').toString().trim(); // eslint-disable-line
-    console.log(gitlink, typeof gitlink,9999);
-    console.log(gitlink.match(/github.com[:/](.+)\/(.+)\.git/),8888)
-    done();
+    const github = new Octokit({
+      auth: process.env.GITHUB_TOKEN,
+    });
+    const [_, owner, repo] = execSync('git remote get-url origin') // eslint-disable-line
+      .toString()
+      .match(/github.com[:/](.+)\/(.+)/);
+    const getLatestRelease = github.repos.getLatestRelease({
+      owner,
+      repo,
+    });
+    const listCommits = github.repos.listCommits({
+      owner,
+      repo,
+      per_page: 1,
+    });
+    Promise.all([getLatestRelease, listCommits]).then(([latestRelease, commits]) => {
+      const preVersion = latestRelease.data.tag_name;
+      const { version } = packageJson;
+      const [_, newVersion] = commits.data[0].commit.message.trim().match(/bump (.+)/) || []; // eslint-disable-line
+      if (
+        compareVersions(version, preVersion) === 1 &&
+        newVersion &&
+        newVersion.trim() === version
+      ) {
+        // eslint-disable-next-line no-unused-vars
+        runCmd('npm', ['run', 'pub'], code => {
+          done();
+        });
+      } else {
+        reportError(
+          'donot need publish' + version
+        );
+      }
+    });
   }),
 );
 
