@@ -435,23 +435,20 @@ gulp.task(
       const preVersion = latestRelease.data.tag_name;
       const { version } = packageJson;
       const [_, newVersion] = commits.data[0].commit.message.trim().match(/bump (.+)/) || []; // eslint-disable-line
-      console.log(compareVersions(version, preVersion), 1);
-      console.log(newVersion,preVersion,version, 90);
-      done();
-//       if (
-//         compareVersions(version, preVersion) === 1 &&
-//         newVersion &&
-//         newVersion.trim() === version
-//       ) {
-//         // eslint-disable-next-line no-unused-vars
-//         runCmd('npm', ['run', 'pub'], code => {
-//           done();
-//         });
-//       } else {
-//         reportError(
-//           'donot need publish' + version
-//         );
-//       }
+      if (
+        compareVersions(version, preVersion) === 1 &&
+        newVersion &&
+        newVersion.trim() === version
+      ) {
+        // eslint-disable-next-line no-unused-vars
+        runCmd('npm', ['run', 'pub'], code => {
+          done();
+        });
+      } else {
+        reportError(
+          'donot need publish' + version
+        );
+      }
     });
   }),
 );
