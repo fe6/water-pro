@@ -1,14 +1,14 @@
 /** @format */
 
-import FormPro from './src/FormPro.vue';
+import FormPro from './core/FormPro.vue';
 
 import { withInstall } from '../_util/type';
 
-export * from './src/types/form';
-export * from './src/types/form-item';
+export * from './core/types/form';
+export * from './core/types/form-item';
 
-export { useComponentRegister } from './src/hooks/use-component-register';
-export { useForm } from './src/hooks/use-form';
+export { useComponentRegister } from './core/hooks/use-component-register';
+export { useForm } from './core/hooks/use-form';
 
 export { FormPro };
 

@@ -2,7 +2,7 @@ import { computed, CSSProperties, PropType } from 'vue';
 
 import { defineComponent } from 'vue';
 
-import { default as Spin } from '../../../components/spin';
+import { default as Spin } from '../../spin';
 import useConfigInject from '../../_util/hooks/useConfigInject';
 import PropTypes from '../../_util/vue-types';
 

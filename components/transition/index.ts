@@ -1,8 +1,8 @@
 /** @format */
 
-import { createSimpleTransition } from './src/create-transition';
+import { createSimpleTransition } from './core/create-transition';
 
-export { default as CollapseTransition } from './src/collapse-transition';
+export { default as CollapseTransition } from './core/collapse-transition';
 
 export const FadeTransition = createSimpleTransition('fade-transition');
 export const ScaleTransition = createSimpleTransition('scale-transition');

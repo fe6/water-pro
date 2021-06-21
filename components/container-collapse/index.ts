@@ -1,9 +1,9 @@
 /** @format */
 
-import ContainerCollapse from './src/container-collapse/ContainerCollapse.vue';
+import ContainerCollapse from './core/container-collapse/ContainerCollapse.vue';
 import { withInstall } from '../_util/type';
 
 export { ContainerCollapse };
-export * from './src/types';
+export * from './core/types';
 
 export default withInstall(ContainerCollapse);

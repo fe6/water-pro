@@ -1,6 +1,6 @@
 /** @format */
 
-import SelectApi from './src/SelectApi.vue';
+import SelectApi from './core/SelectApi.vue';
 
 export { SelectApi };
 

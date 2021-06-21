@@ -1,11 +1,11 @@
 /** @format */
 
-import ModalPro from './src/ModalPro.vue';
+import ModalPro from './core/ModalPro.vue';
 
 export { ModalPro };
-export { useModalContext } from './src/hooks/use-modal-context';
-export { useModal } from './src/hooks/use-modal';
-export * from './src/types';
+export { useModalContext } from './core/hooks/use-modal-context';
+export { useModal } from './core/hooks/use-modal';
+export * from './core/types';
 
 import { withInstall } from '../_util/type';
 

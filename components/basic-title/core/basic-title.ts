@@ -4,7 +4,7 @@ import type { PropType } from 'vue';
 
 import { defineComponent } from 'vue';
 
-import BasicHelp from '../../basic-help/src/basic-help';
+import BasicHelp from '../../basic-help/core/basic-help';
 import Typography from '../../typography/Typography';
 
 import useConfigInject from '../../_util/hooks/useConfigInject';

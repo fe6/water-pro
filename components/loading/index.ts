@@ -1,7 +1,7 @@
 /** @format */
 
-import Loading from './src/Index.vue';
+import Loading from './core/Index.vue';
 
 export { Loading };
-export { useLoading } from './src/use-loading';
-export { createLoading } from './src/create-loading';
+export { useLoading } from './core/use-loading';
+export { createLoading } from './core/create-loading';

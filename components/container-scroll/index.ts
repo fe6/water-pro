@@ -1,9 +1,9 @@
 /** @format */
 
-import ContainerScroll from './src/ContainerScroll.vue';
+import ContainerScroll from './core/ContainerScroll.vue';
 import { withInstall } from '../_util/type';
 
 export { ContainerScroll };
-export * from './src/types';
+export * from './core/types';
 
 export default withInstall(ContainerScroll);

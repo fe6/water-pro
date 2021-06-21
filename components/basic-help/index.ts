@@ -1,6 +1,6 @@
 /** @format */
 
-import BasicHelp from './src/basic-help';
+import BasicHelp from './core/basic-help';
 import { withInstall } from '../_util/type';
 
 export { BasicHelp };

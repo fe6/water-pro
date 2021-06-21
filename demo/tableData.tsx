@@ -1,5 +1,5 @@
 import { FormProps, FormSchema } from '../components/table-pro';
-import { BasicColumn } from '../components/table-pro/src/types/table';
+import { BasicColumn } from '../components/table-pro/core/types/table';
 
 export function getBasicColumns(): BasicColumn[] {
   return [

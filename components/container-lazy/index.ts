@@ -1,9 +1,9 @@
 /** @format */
 
-import ContainerLazy from './src/ContainerLazy.vue';
+import ContainerLazy from './core/ContainerLazy.vue';
 import { withInstall } from '../_util/type';
 
 export { ContainerLazy };
-export * from './src/types';
+export * from './core/types';
 
 export default withInstall(ContainerLazy);

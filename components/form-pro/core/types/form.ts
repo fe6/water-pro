@@ -6,7 +6,7 @@ import type { ButtonProps as AntdButtonProps } from '../../../button/buttonTypes
 
 import type { FormItem } from './form-item';
 import type { ColEx, ComponentType } from './index';
-import type { TableActionType } from '../../../table-pro/src/types/table';
+import type { TableActionType } from '../../../table-pro/core/types/table';
 import type { CSSProperties } from 'vue';
 
 export type FieldMapToTime = [string, [string, string], string?][];

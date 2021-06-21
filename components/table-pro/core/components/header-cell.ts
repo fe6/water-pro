@@ -2,7 +2,7 @@ import type { PropType } from 'vue';
 import type { BasicColumn } from '../types/table';
 
 import { defineComponent, computed } from 'vue';
-import BasicHelp from '../../../basic-help/src/basic-help';
+import BasicHelp from '../../../basic-help/core/basic-help';
 import EditTableHeaderCell from './EditTableHeaderIcon.vue';
 import useConfigInject from '../../../_util/hooks/useConfigInject';
 

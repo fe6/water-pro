@@ -11,7 +11,7 @@ import type {
   TableRowSelection,
   LocaleParams,
 } from './types/table';
-import type { ColEx } from '../../form-pro/src/types';
+import type { ColEx } from '../../form-pro/core/types';
 import type { FormProps } from '../../form-pro';
 import PropTypes from '../../_util/vue-types';
 import { DEFAULT_FILTER_FN, DEFAULT_SORT_FN, FETCH_SETTING } from './const';

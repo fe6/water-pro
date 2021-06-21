@@ -1,6 +1,6 @@
 /** @format */
 
-import BasicArrow from './src/BasicArrow.vue';
+import BasicArrow from './core/BasicArrow.vue';
 import { withInstall } from '../_util/type';
 
 export { BasicArrow };

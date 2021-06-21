@@ -1,6 +1,6 @@
 /** @format */
 
-import TagModalList from './src/TagModalList.vue';
+import TagModalList from './core/TagModalList.vue';
 
 export { TagModalList };
 

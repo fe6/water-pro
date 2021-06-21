@@ -1,5 +1,5 @@
 import { withInstall } from '../_util/type';
-import UploadName from './src/UploadName.vue';
+import UploadName from './core/UploadName.vue';
 
 export { UploadName };
 export default withInstall(UploadName);
