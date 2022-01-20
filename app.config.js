@@ -1,0 +1,1 @@
+window.__PRODUCTION____APP__CONF__={};Object.freeze(window.__PRODUCTION____APP__CONF__);Object.defineProperty(window,"__PRODUCTION____APP__CONF__",{configurable:false,writable:false,});
