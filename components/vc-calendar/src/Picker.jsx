@@ -70,9 +70,12 @@ const Picker = defineComponent({
   },
   watch: {
     value(val) {
-      this.setState({
-        sValue: val,
-      });
+      // 修复 form-pro setValues 的时候 undfined 也更新进去了不显示值
+      if (val) {
+        this.setState({
+          sValue: val,
+        });
+      }
     },
     open(val) {
       this.setState({
