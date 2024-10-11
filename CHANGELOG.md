@@ -1,4 +1,4 @@
-## [4.30.6](https://github.com/fe6/water-pro/compare/v4.7.1...v4.30.6) (2024-05-29)
+## [4.30.7](https://github.com/fe6/water-pro/compare/v4.7.1...v4.30.7) (2024-10-11)
 
 
 ### Bug Fixes
@@ -52,6 +52,7 @@
 * **$usermodal:** search error ([22050a7](https://github.com/fe6/water-pro/commit/22050a780044b9b434ec9fc42c106d5a5a990e46))
 * **分页:** 修复多语言默认预约 ([54f329d](https://github.com/fe6/water-pro/commit/54f329d3c4e27046ed1deb794677e91dc53c5b0e))
 * **日历:** 默认中文 ([48a15d7](https://github.com/fe6/water-pro/commit/48a15d7762af6471e2cea2055bb8fd3b531dd88b))
+* **时间区间选择器:** 不支持步长设置的问题 ([f1cfa59](https://github.com/fe6/water-pro/commit/f1cfa59f471728eeafe23c7fd20dcb976315fa87))
 * **colorpicker:** arrow color error in dark theme ([41e6a1f](https://github.com/fe6/water-pro/commit/41e6a1f9099c78fed9de283f06ae9f75ccf2704e))
 * **cropper:** 不缩放底图鼠标滚轮触发报错 ([ba0995a](https://github.com/fe6/water-pro/commit/ba0995ab3b1387426a66f27cec51989f0bcc9a82))
 * **cropper:** 弹框遮罩层不能关闭 ([db02761](https://github.com/fe6/water-pro/commit/db02761ebeeca1e423fd27dd4d49b660be4f168d))
