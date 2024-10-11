@@ -84,6 +84,9 @@ export type RangeDateRender<DateType> = (props: {
 
 export type RangePickerSharedProps<DateType> = {
   id?: string;
+  hourStep?: number;
+  minuteStep?: number;
+  secondStep?: number;
   value?: RangeValue<DateType>;
   defaultValue?: RangeValue<DateType>;
   defaultPickerValue?: [DateType, DateType];
@@ -124,6 +127,9 @@ type OmitPickerProps<Props> = Omit<
   Props,
   | 'value'
   | 'defaultValue'
+  | 'hourStep'
+  | 'minuteStep'
+  | 'secondStep'
   | 'defaultPickerValue'
   | 'placeholder'
   | 'disabled'
@@ -203,6 +209,9 @@ function RangerPicker<DateType>() {
       'separator',
       'value',
       'defaultValue',
+      'hourStep',
+      'minuteStep',
+      'secondStep',
       'defaultPickerValue',
       'open',
       'defaultOpen',

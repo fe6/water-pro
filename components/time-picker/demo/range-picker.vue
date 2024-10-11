@@ -17,5 +17,5 @@ Use time range picker with `TimeRangePicker`.
 </docs>
 
 <template>
-  <a-time-range-picker />
+  <a-time-range-picker :hour-step="5" :minute-step="15" :second-step="30" />
 </template>
