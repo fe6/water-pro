@@ -128,7 +128,7 @@ export default defineComponent({
     let imageNode = [];
 
     let dragNode = null;
-    if (this.draggable) {
+    if (!this.disabled && this.draggable) {
       dragNode = (
         <ToolTip title={this.locale?.dragPlaceholder || '拖拽改变位置'}>
           <IconBytedAutoWidth
@@ -166,18 +166,19 @@ export default defineComponent({
             <div class={`${this.prefixClsNew}-handle`}>
               <ToolTip title={this.locale?.seePlaceholder || '查看'}>
                 <IconBytedEyes
-                  class={`${this.prefixClsNew}-icon`}
+                  
                   colors={['currentColor']}
                   onClick={() => this.handlePoseterPreview(iItem)}
                 />
               </ToolTip>
               {dragNode}
-              <ToolTip title={this.locale?.removePlaceholder || '删除'}>
+              {this.disabled?null:<ToolTip title={this.locale?.removePlaceholder || '删除'}>
                 <IconBytedDelete
+                  class={`${this.prefixClsNew}-icon`}
                   colors={['currentColor']}
                   onClick={() => this.removeOneImage(iIdx)}
                 />
-              </ToolTip>
+              </ToolTip>}
             </div>
           </div>
         );
