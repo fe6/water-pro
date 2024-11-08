@@ -58,6 +58,11 @@ export default defineComponent({
         theOriginList.value = (props.value as string[]).slice();
         imageList.value = (props.value as string[]).slice();
       }
+      // 修复 form-pro 重置突然还有的问题
+      if (isArray(props.value) && props.value.length === 0) {
+        theOriginList.value = [];
+        imageList.value = [];
+      }
     });
 
     const beforeUploadFn = (file: FileItem) => {
@@ -166,19 +171,20 @@ export default defineComponent({
             <div class={`${this.prefixClsNew}-handle`}>
               <ToolTip title={this.locale?.seePlaceholder || '查看'}>
                 <IconBytedEyes
-                  
                   colors={['currentColor']}
                   onClick={() => this.handlePoseterPreview(iItem)}
                 />
               </ToolTip>
               {dragNode}
-              {this.disabled?null:<ToolTip title={this.locale?.removePlaceholder || '删除'}>
-                <IconBytedDelete
-                  class={`${this.prefixClsNew}-icon`}
-                  colors={['currentColor']}
-                  onClick={() => this.removeOneImage(iIdx)}
-                />
-              </ToolTip>}
+              {this.disabled ? null : (
+                <ToolTip title={this.locale?.removePlaceholder || '删除'}>
+                  <IconBytedDelete
+                    class={`${this.prefixClsNew}-icon`}
+                    colors={['currentColor']}
+                    onClick={() => this.removeOneImage(iIdx)}
+                  />
+                </ToolTip>
+              )}
             </div>
           </div>
         );
