@@ -1,4 +1,4 @@
-## [4.30.8](https://github.com/fe6/water-pro/compare/v4.7.1...v4.30.8) (2024-11-08)
+## [4.30.9](https://github.com/fe6/water-pro/compare/v4.7.1...v4.30.9) (2024-11-29)
 
 
 ### Bug Fixes
@@ -88,6 +88,7 @@
 * **ts:** 打包失败 ([e5e12fa](https://github.com/fe6/water-pro/commit/e5e12fa3a9cf69fef1b7d5e47e1513a4c17b33da))
 * **update-card:** 修复禁用状态还能拖拽及删除 ([93ebdde](https://github.com/fe6/water-pro/commit/93ebddea7e6c1440f9134a00e204920c146edd97))
 * **upload-card:** from-pro 重置图片还在问题 ([2026a2a](https://github.com/fe6/water-pro/commit/2026a2aac004308ef69d553bbb644be9fcb4327f))
+* **uploadCard:** 拖拽图片乱序问题 ([e9f1a8d](https://github.com/fe6/water-pro/commit/e9f1a8d6e323b3060ab7ec405fee1ebf9e4928f6))
 * **uploadcard:** 显示之后不排序 ([377408f](https://github.com/fe6/water-pro/commit/377408fe65b24cf2dc66c1cdce6959e3fed68a11))
 * **uploadcard:** value no change ([a96ffd7](https://github.com/fe6/water-pro/commit/a96ffd7126c89f7e97e37104a49649e0344cc345))
 * **upload:** color error v2 ([26f10ff](https://github.com/fe6/water-pro/commit/26f10ff8c81b7732949002b8fbb9c8147c21d2d9))
@@ -97,6 +98,7 @@
 * **upload:** hover color error in dark ([977ea11](https://github.com/fe6/water-pro/commit/977ea11d9c114139034b48c46385263de8c8a177))
 * **uploadimage:** 修复设置宽高不生效 ([ff27aaf](https://github.com/fe6/water-pro/commit/ff27aaf86d4ef2876e778ae1d05b0ba7328f6f58))
 * **uploadimage:** 修复设置宽高不生效 v2 ([918adba](https://github.com/fe6/water-pro/commit/918adbaf8604e6a6cc55ab5b9bd205cf4b5127a7))
+* **uploadName:** data 参数不生效 ([4e78d2b](https://github.com/fe6/water-pro/commit/4e78d2b35ee032fd4bb426be2a73310f1019dec0))
 * **usermodal:** check eror for key ([7dfc967](https://github.com/fe6/water-pro/commit/7dfc967fa45cc1a41a08a7d917ec965973f1b5c6))
 * **var:** disable error ([1cee329](https://github.com/fe6/water-pro/commit/1cee32977533893624606e3f43ed37e0120e3f55))
 * **var:** disabled color ([ad25d31](https://github.com/fe6/water-pro/commit/ad25d31b77ca7db330c5df5f601d6fe6ea592be6))
