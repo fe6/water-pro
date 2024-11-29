@@ -51,6 +51,7 @@ const schemas: FormProSchema[] = [
     field: 'defUpload',
     component: 'UploadCard',
     label: 'UploadCard',
+    changeEvent: 'changeUpload',
     dynamicRules: (ruleParams: ComputedRef<RenderCallbackParams>) => {
       return [
         {
@@ -132,6 +133,8 @@ export default defineComponent({
         defUpload: [
           'https://test-oss.test.fanzhi.cn/images/34/35/5e2ffc81f0e59b30eaac175838bf.jpg',
           'https://test-oss.test.fanzhi.cn/images/83/93/6262f5e0e58a3af7035a550ab68d.jpg',
+          'https://test-oss.test.fanzhi.cn/images/ae/84/a3684b4ee391a87932ef686380ec.jpg',
+          'https://test-oss.test.fanzhi.cn/images/90/b9/b762abc7b148ceb6e633ced3f84c.jpg',
         ],
         input: 'xxx',
       });

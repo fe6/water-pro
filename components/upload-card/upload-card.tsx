@@ -150,6 +150,7 @@ export default defineComponent({
         return (
           <div
             class={`${this.prefixClsNew}-img-box`}
+            key={iItem}
             style={{
               width: `${this.imageWidth}px`,
               height: `${this.imageHeight}px`,
