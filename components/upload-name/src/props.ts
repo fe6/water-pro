@@ -24,6 +24,7 @@ export const uploadNameProps = {
     type: Function,
     default: undefined,
   },
+  data: PropTypes.object.def({}),
   headers: PropTypes.object,
   placeholder: PropTypes.string,
   accept: PropTypes.string.def(acceptListString),

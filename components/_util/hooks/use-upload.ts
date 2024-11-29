@@ -82,7 +82,8 @@ export function useUpload(
       imageData = isUndefined(props.mergeChangeDatas)
         ? imageData
         : props.mergeChangeDatas(imageData, info);
-      imageName.value = imageData[props.nameKey];
+      const theNameKeys = props.nameKey.split('.');
+      imageName.value = theNameKeys?.length > 1 ? imageData[theNameKeys[0]][theNameKeys[1]] : imageData[props.nameKey];
       imageUrl.value = imageData[props.urlKey];
 
       emitMethods(imageUrl.value, imageName.value, info);

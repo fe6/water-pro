@@ -32,7 +32,7 @@ const schemas: FormProSchema[] = [
     field: 'input',
     component: 'Input',
     label: 'Input',
-    componentProps: (params: FormProComponentPropsParams) => {
+    componentProps: () => {
       return {};
     },
   },
@@ -40,7 +40,7 @@ const schemas: FormProSchema[] = [
     field: 'disabledUpload',
     component: 'UploadCard',
     label: 'UploadCard',
-    componentProps: (params: FormProComponentPropsParams) => {
+    componentProps: () => {
       return {
         draggable: true,
         disabled: true,
@@ -65,7 +65,7 @@ const schemas: FormProSchema[] = [
         },
       ];
     },
-    componentProps: (params: FormProComponentPropsParams) => {
+    componentProps: (params: any) => {
       return {
         placeholder: 'UploadCard',
         data: {
@@ -76,6 +76,39 @@ const schemas: FormProSchema[] = [
         onFormChange: () => {
           // 上传之后验证一下
           params.formActionType.validate(['defUpload']);
+        },
+      };
+    },
+  },
+  {
+    field: 'UploadName',
+    component: 'UploadName',
+    label: 'UploadName',
+    dynamicRules: (ruleParams: ComputedRef<RenderCallbackParams>) => {
+      return [
+        {
+          required: true,
+          validator: () => {
+            const { UploadName } = ruleParams.value.values;
+            if (!UploadName || !UploadName?.url) {
+              return Promise.reject(new Error('请上传 UploadName'));
+            }
+            return Promise.resolve();
+          },
+        },
+      ];
+    },
+    componentProps: (params: any) => {
+      return {
+        placeholder: 'UploadName',
+        data: {
+          topic: 'project',
+        },
+        action: 'https://api.test.fanzhi.cn/common/upload/images/resource',
+        nameKey: 'meta.name',
+        onFormChange: () => {
+          // 上传之后验证一下
+          params.formActionType.validate(['UploadName']);
         },
       };
     },
