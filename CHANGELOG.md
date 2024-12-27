@@ -1,4 +1,4 @@
-# [4.31.0](https://github.com/fe6/water-pro/compare/v4.7.1...v4.31.0) (2024-12-27)
+# [4.32.0](https://github.com/fe6/water-pro/compare/v4.7.1...v4.32.0) (2024-12-27)
 
 
 ### Bug Fixes
@@ -158,6 +158,7 @@
 * **typography:** 新增主题类型 ([1f3e129](https://github.com/fe6/water-pro/commit/1f3e12928b10c1b0de6f3e4882e8ec8ebef5a518))
 * **typography:** add centerable prop ([67fbc76](https://github.com/fe6/water-pro/commit/67fbc76c9122baa48b5d5b34275a29f4b4d4a82b))
 * **upload:** 新增上传字段的类型 ([ac7c097](https://github.com/fe6/water-pro/commit/ac7c0975daaf34ac329c35b880859d9467af6eb6))
+* **upload:** 增加裁切导出的图片类型，图片质量，上传报错文案 ([016e05b](https://github.com/fe6/water-pro/commit/016e05b378645804b9fbb56e3dd538492683fe79))
 * **uploadcard:** 新增 dragEnd 事件 ([86d976e](https://github.com/fe6/water-pro/commit/86d976e749f9f8a11894f8c05eb763c567c555d5))
 * **uploadcard:** 支持裁切 ([b0209e0](https://github.com/fe6/water-pro/commit/b0209e0ebebd9680d2307c813e161bb0916790d5))
 * **var:** add text color ([8f82848](https://github.com/fe6/water-pro/commit/8f828481bbd2c37e4700004abee954af61910162))
