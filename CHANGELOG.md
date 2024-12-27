@@ -1,4 +1,4 @@
-## [4.30.9](https://github.com/fe6/water-pro/compare/v4.7.1...v4.30.9) (2024-11-29)
+# [4.31.0](https://github.com/fe6/water-pro/compare/v4.7.1...v4.31.0) (2024-12-27)
 
 
 ### Bug Fixes
@@ -90,6 +90,7 @@
 * **upload-card:** from-pro 重置图片还在问题 ([2026a2a](https://github.com/fe6/water-pro/commit/2026a2aac004308ef69d553bbb644be9fcb4327f))
 * **uploadCard:** 拖拽图片乱序问题 ([e9f1a8d](https://github.com/fe6/water-pro/commit/e9f1a8d6e323b3060ab7ec405fee1ebf9e4928f6))
 * **uploadcard:** 显示之后不排序 ([377408f](https://github.com/fe6/water-pro/commit/377408fe65b24cf2dc66c1cdce6959e3fed68a11))
+* **UploadCard:** 修复 form-pro 不触发上传属性 ([6c9606b](https://github.com/fe6/water-pro/commit/6c9606b61d30b9ecf0983f1a375410be032188aa))
 * **uploadcard:** value no change ([a96ffd7](https://github.com/fe6/water-pro/commit/a96ffd7126c89f7e97e37104a49649e0344cc345))
 * **upload:** color error v2 ([26f10ff](https://github.com/fe6/water-pro/commit/26f10ff8c81b7732949002b8fbb9c8147c21d2d9))
 * **upload:** css var error ([aee0922](https://github.com/fe6/water-pro/commit/aee092250958bf69c7145735d57fafc6ff7c5f05))
@@ -156,6 +157,7 @@
 * **typography:** 新增快捷组件 ([a2da0fe](https://github.com/fe6/water-pro/commit/a2da0fe2ede27372f08e4a6bb28e48a7341383e0))
 * **typography:** 新增主题类型 ([1f3e129](https://github.com/fe6/water-pro/commit/1f3e12928b10c1b0de6f3e4882e8ec8ebef5a518))
 * **typography:** add centerable prop ([67fbc76](https://github.com/fe6/water-pro/commit/67fbc76c9122baa48b5d5b34275a29f4b4d4a82b))
+* **upload:** 新增上传字段的类型 ([ac7c097](https://github.com/fe6/water-pro/commit/ac7c0975daaf34ac329c35b880859d9467af6eb6))
 * **uploadcard:** 新增 dragEnd 事件 ([86d976e](https://github.com/fe6/water-pro/commit/86d976e749f9f8a11894f8c05eb763c567c555d5))
 * **uploadcard:** 支持裁切 ([b0209e0](https://github.com/fe6/water-pro/commit/b0209e0ebebd9680d2307c813e161bb0916790d5))
 * **var:** add text color ([8f82848](https://github.com/fe6/water-pro/commit/8f828481bbd2c37e4700004abee954af61910162))
