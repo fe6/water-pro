@@ -64,6 +64,7 @@ export function useUpload(
   };
 
   const handleChange = (info: FileInfo) => {
+    console.log(info, 'info');
     // [fix] formPro 中 autoUpload = false 的时候没有 emit 事件不方便操作
     if (!props.autoUpload) {
       emitMethods(imageUrl.value, imageName.value, info);
@@ -73,7 +74,7 @@ export function useUpload(
       loading.value = true;
       return;
     }
-    if (info.file.status === 'done') {
+    if (info?.file?.response?.code === 10000 && info.file.status === 'done') {
       loading.value = false;
       let imageData =
         props.resultKey && hasOwn(info.file.response, props.resultKey)
@@ -88,9 +89,9 @@ export function useUpload(
 
       emitMethods(imageUrl.value, imageName.value, info);
     }
-    if (info.file.status === 'error') {
+    if (info?.file?.response?.code !== 10000 || info.file.status === 'error') {
       loading.value = false;
-      message.error('upload error');
+      message.error(props?.uploadErrorTip||'upload error');
     }
   };
 
@@ -165,7 +166,7 @@ export function useMoreUpload(
       moreLoading.value = true;
       return;
     }
-    if (info.file.status === 'done') {
+    if (info?.file?.response?.code === 10000 && info.file.status === 'done') {
       moreLoading.value = false;
       const imageData =
         props.resultKey && hasOwn(info.file.response, props.resultKey)
@@ -176,9 +177,9 @@ export function useMoreUpload(
 
       emitMoreMethods(imageList.value, info);
     }
-    if (info.file.status === 'error') {
+    if (info?.file?.response?.code !== 10000 || info.file.status === 'error') {
       moreLoading.value = false;
-      message.error('upload error');
+      message.error(props?.uploadErrorTip||'upload error');
     }
   };
 

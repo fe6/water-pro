@@ -42,6 +42,9 @@ cover: https://gw.alipayobjects.com/zos/alicdn/QaeBt_ZMg/Upload.svg
 | cropper | 裁切功能 | boolean | false |  | 4.30.0 |
 | cropperProps | 裁切功能组件的配置 | object | - |  | 4.30.0 |
 | cropperUploadType | 上传的 file 字段是 base64 还是 binary 。可选值: binary \| base64 | String | base64 |  | 4.31.0 |
+| cropperCanvasToDataURLType | 导出图片类型。可选值: 'image/png' 或 'image/jpeg' 或 'image/webp' | String | image/png |  | 4.32.0 |
+| cropperCanvasToDataURLQuality | 导出图片质量。在 0 - 1 之间。 | Number | 0.92 |  | 4.32.0 |
+| uploadErrorTip | 报错文案 | String | image/png |  | 4.32.0 |
 
 ## 事件
 

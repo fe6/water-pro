@@ -46,6 +46,7 @@ export const uploadProps = () => {
     onMouseenter: Function as PropType<(e: MouseEvent) => void>,
     onMouseleave: Function as PropType<(e: MouseEvent) => void>,
     onClick: Function as PropType<(e: MouseEvent | KeyboardEvent) => void>,
+    uploadErrorTip: { type: String, default: '上传失败' },
   };
 };
 

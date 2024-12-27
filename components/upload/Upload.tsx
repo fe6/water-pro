@@ -44,6 +44,9 @@ export default defineComponent({
     cropperWidth: 750,
     cropperHeight: 450,
     cropperUploadType: 'base64',
+    uploadErrorTip: '上传失败',
+    cropperCanvasToDataURLType: 'image/png',
+    cropperCanvasToDataURLQuality: 0.92,
     cropperProps: {},
   }),
   setup(props, { slots, attrs, expose }) {
@@ -421,10 +424,10 @@ export default defineComponent({
 
     const onOkCropperModal = () => {
       theTriggerUploadCropper.value = true;
-      const theBase64Url = theRefCropper.value.getResult().canvas.toDataURL();
+      const theBase64Url = theRefCropper.value.getResult().canvas.toDataURL(props.cropperCanvasToDataURLType, props.cropperCanvasToDataURLQuality);
       const theBase64Content = getBase64ImageContent(theBase64Url);
       const theImageBlob = base64ToBlob(theBase64Content);
-      
+
       upload.value.uploader.uploadFiles([theFileCropper.value], props.cropperUploadType === 'binary' ? theImageBlob : theBase64Url);
     }
     const onCropperNode = () => {

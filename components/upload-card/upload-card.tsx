@@ -234,6 +234,9 @@ export default defineComponent({
           cropper={this.cropper}
           cropperProps={this.cropperProps}
           cropperUploadType={this.cropperUploadType}
+          cropperCanvasToDataURLType={this.cropperCanvasToDataURLType}
+          cropperCanvasToDataURLQuality={this.cropperCanvasToDataURLQuality}
+          uploadErrorTip={this.uploadErrorTip}
           name={this.name}
         >
           <div

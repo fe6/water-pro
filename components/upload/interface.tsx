@@ -156,6 +156,9 @@ function uploadProps<T = any>() {
     cropperHeight: { type: [String, Number], default: undefined },
     cropperProps: { type: Object as PropType<any>, default: {} },
     cropperUploadType: { type: String, default: 'base64' },
+    cropperCanvasToDataURLType: { type: String, default: 'image/png' },
+    cropperCanvasToDataURLQuality: { type: Number, default: 0.92 },
+    uploadErrorTip: { type: String, default: '上传失败' },
   };
 }
 

@@ -90,7 +90,7 @@ const schemas: FormProSchema[] = [
   {
     field: 'cropperUpload',
     component: 'UploadCard',
-    label: '裁切UploadCard',
+    label: '裁1切UploadCard',
     changeEvent: 'changeUpload',
     componentProps: () => {
       return {
@@ -98,11 +98,21 @@ const schemas: FormProSchema[] = [
         data: {
           topic: 'project',
         },
-        cropperProps: { ratio: 1.63 },
+        cropperProps: {
+          ratio: 1.63,
+        },
+        // 导出图片类型
+        cropperCanvasToDataURLType: 'image/jpeg',
+        // 导出质量
+        cropperCanvasToDataURLQuality: 0.85,
+        // 报错文案
+        uploadErrorTip: '失败了',
         cropper: true,
+        // name: 'base64String',
         cropperUploadType: 'binary',
         draggable: true,
         action: 'https://api.test.fanzhi.cn/common/upload/images/resource',
+        // action: 'https://api.test.fanzhi.cn/common/upload/images/base64',
       };
     },
   },

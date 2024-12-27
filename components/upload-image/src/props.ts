@@ -32,5 +32,8 @@ export const uploadImageProps = {
   cropper: PropTypes.bool.def(false),
   cropperProps: { type: Object as PropType<any>, default: () => ({}) },
   cropperUploadType: PropTypes.string.def('base64'),
+  cropperCanvasToDataURLType: { type: String, default: 'image/png' },
+  cropperCanvasToDataURLQuality: { type: Number, default: 0.92 },
+  uploadErrorTip: { type: String, default: '上传失败' },
 };
 export type UploadImageProps = Partial<ExtractPropTypes<typeof uploadImageProps>>;

@@ -24,6 +24,7 @@ export default defineComponent({
     customRequest: null,
     withCredentials: false,
     openFileDialogOnClick: true,
+    uploadErrorTip: '上传失败',
   }),
   setup(props, { slots, attrs, expose }) {
     const uploader = ref();
