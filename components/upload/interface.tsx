@@ -155,6 +155,7 @@ function uploadProps<T = any>() {
     cropperWidth: { type: [String, Number], default: undefined },
     cropperHeight: { type: [String, Number], default: undefined },
     cropperProps: { type: Object as PropType<any>, default: {} },
+    cropperUploadType: { type: String, default: 'base64' },
   };
 }
 

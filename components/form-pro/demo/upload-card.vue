@@ -88,13 +88,32 @@ const schemas: FormProSchema[] = [
     },
   },
   {
+    field: 'cropperUpload',
+    component: 'UploadCard',
+    label: '裁切UploadCard',
+    changeEvent: 'changeUpload',
+    componentProps: () => {
+      return {
+        placeholder: 'UploadCard',
+        data: {
+          topic: 'project',
+        },
+        cropperProps: { ratio: 1.63 },
+        cropper: true,
+        cropperUploadType: 'binary',
+        draggable: true,
+        action: 'https://api.test.fanzhi.cn/common/upload/images/resource',
+      };
+    },
+  },
+  {
     field: 'UploadName',
     component: 'UploadName',
     label: 'UploadName',
     dynamicRules: (ruleParams: ComputedRef<RenderCallbackParams>) => {
       return [
         {
-          required: true,
+          // required: true,
           validator: () => {
             const { UploadName } = ruleParams.value.values;
             if (!UploadName || !UploadName?.url) {

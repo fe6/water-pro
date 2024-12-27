@@ -31,5 +31,6 @@ export const uploadImageProps = {
   locale: { type: Object as PropType<UploadImageLocale> },
   cropper: PropTypes.bool.def(false),
   cropperProps: { type: Object as PropType<any>, default: () => ({}) },
+  cropperUploadType: PropTypes.string.def('base64'),
 };
 export type UploadImageProps = Partial<ExtractPropTypes<typeof uploadImageProps>>;

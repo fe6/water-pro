@@ -43,6 +43,7 @@ export default defineComponent({
     cropper: false,
     cropperWidth: 750,
     cropperHeight: 450,
+    cropperUploadType: 'base64',
     cropperProps: {},
   }),
   setup(props, { slots, attrs, expose }) {
@@ -393,9 +394,38 @@ export default defineComponent({
       theStatusModalCropper.value = false;
       theTriggerUploadCropper.value = false;
     }
+
+    // 验证和清理Base64字符串
+    const getBase64ImageContent = (base64DataUrl: string) => {
+      const base64Marker = ';base64,';
+      const base64Index = base64DataUrl.indexOf(base64Marker) + base64Marker.length;
+      const base64Content = base64DataUrl.substring(base64Index);
+      return base64Content;
+    }
+
+    // 将Base64字符串转换成二进制数据（Blob）
+    const base64ToBlob = (base64Content: string, contentType = 'image/png') => {
+      try {
+          const binaryString = atob(base64Content);
+          const length = binaryString.length;
+          const binaryArray = new Uint8Array(length);
+          for (let i = 0; i < length; i++) {
+              binaryArray[i] = binaryString.charCodeAt(i);
+          }
+          return new Blob([binaryArray], { type: contentType });
+      } catch (error) {
+          console.error('Base64解码失败:', error);
+          return null;
+      }
+    }
+
     const onOkCropperModal = () => {
       theTriggerUploadCropper.value = true;
-      upload.value.uploader.uploadFiles([theFileCropper.value], theRefCropper.value.getResult().canvas.toDataURL());
+      const theBase64Url = theRefCropper.value.getResult().canvas.toDataURL();
+      const theBase64Content = getBase64ImageContent(theBase64Url);
+      const theImageBlob = base64ToBlob(theBase64Content);
+      
+      upload.value.uploader.uploadFiles([theFileCropper.value], props.cropperUploadType === 'binary' ? theImageBlob : theBase64Url);
     }
     const onCropperNode = () => {
       if (props.cropper) {

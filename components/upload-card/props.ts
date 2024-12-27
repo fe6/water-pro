@@ -38,5 +38,6 @@ export const uploadCardProps = {
   name: PropTypes.string.def('file'),
   cropper: PropTypes.bool.def(false),
   cropperProps: { type: Object as PropType<any>, default: {} },
+  cropperUploadType: PropTypes.string.def('base64'),
 };
 export type UploadCardProps = Partial<ExtractPropTypes<typeof uploadCardProps>>;

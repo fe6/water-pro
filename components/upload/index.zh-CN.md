@@ -50,6 +50,8 @@ cover: https://gw.alipayobjects.com/zos/alicdn/QaeBt_ZMg/Upload.svg
 | withCredentials | 上传请求时是否携带 cookie | boolean | false |  |  |
 | cropper | 裁切功能 | boolean | false |  | 4.30.0 |
 | cropperProps | 裁切功能组件的配置 | object | - |  | 4.30.0 |
+| cropperUploadType | 上传的 file 字段是 base64 还是 binary 。可选值: binary \| base64 | String | base64 |  | 4.31.0 |
+
 
 ### 事件
 

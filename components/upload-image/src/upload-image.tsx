@@ -159,6 +159,7 @@ export default defineComponent({
           before-upload={this.beforeUploadFn}
           cropper={this.cropper}
           cropperProps={this.cropperProps}
+          cropperUploadType={this.cropperUploadType}
           onChange={this.handleChange}
         >
           <div v-show={!this.imageUrl} class={`${this.prefixClsNew}-btn`} style={{width: `${this.imageWidth - 2}px`,height: `${this.imageHeight - 2}px`}}>

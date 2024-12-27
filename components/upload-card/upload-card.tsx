@@ -233,6 +233,7 @@ export default defineComponent({
           data={this.data}
           cropper={this.cropper}
           cropperProps={this.cropperProps}
+          cropperUploadType={this.cropperUploadType}
           name={this.name}
         >
           <div
