@@ -16,7 +16,7 @@ Fix Width.
 </docs>
 
 <template>
-  <a-form-pro @register="ruleForm" />
+  <a-form-pro @register="ruleForm" @submit="onSubmit" />
 </template>
 <script lang="ts">
 import type { ComputedRef } from 'vue';
@@ -78,6 +78,12 @@ const schemas: FormProSchema[] = [
           // 上传之后验证一下
           params.formActionType.validate(['defUpload']);
         },
+        mergeOriginDatas: (uploadParams: any, file: any, oldIndexNumber, newIndexNumber) => {
+          console.log(uploadParams,oldIndexNumber, newIndexNumber, 'uploadParams');
+        },
+        onDragEnd(oldIndexNumber, newIndexNumber) {
+          console.log(oldIndexNumber, newIndexNumber, 'oldIndexNumber, newIndexNumber');
+        },
       };
     },
   },
@@ -118,7 +124,7 @@ const schemas: FormProSchema[] = [
 
 export default defineComponent({
   setup() {
-    const [ruleForm, { setFieldsValue }] = useForm({
+    const [ruleForm, { setFieldsValue, getFieldsValue }] = useForm({
       schemas,
       labelWidth: 200,
       colon: false,
@@ -140,8 +146,13 @@ export default defineComponent({
       });
     });
 
+    const onSubmit = () => {
+      console.log(getFieldsValue(), 'getFieldsValue');
+    }
+
     return {
       ruleForm,
+      onSubmit,
     };
   },
 });

@@ -102,6 +102,7 @@ export default defineComponent({
             }
             params.emit('dragEnd', oldIndexNumber, newIndexNumber);
             params.emit('changeUpload', newImageList);
+            props?.mergeOriginDatas?.(null,null, oldIndexNumber, newIndexNumber);
             formItemContext.onFieldChange();
             formItemContext.onFieldBlur();
           },
