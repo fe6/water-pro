@@ -60,6 +60,7 @@ cover: https://gw.alipayobjects.com/zos/alicdn/ORmcdeaoO/Form.svg
 | advancedAll | 默认都展开 | boolean | - | 4.0.0 |
 | inlineCol | 当 `layout="inline"` 的时候，控制各个字段的栅格 | [ColProps](../grid/col.tsx) | { span: 8 } | 4.0.0 |
 | inlineActionCol | 当 `layout="inline"` 的时候，控制按钮的栅格 | [ColProps](../grid/col.tsx) | { span: 8 } | 4.0.0 |
+| inlineActionInnerRow | 当 `layout="inline"` 的时候，按钮里面的样式 | [ColProps](../grid/row.tsx) | {} | 4.33.0 |
 | inlineRow | 当 `layout="inline"` 的时候，控制各个字段的栅格 | [ColProps](../grid/col.tsx) | { span: 8 } | 4.0.0 |
 | okText | 重置按钮文案 | string | 查询 |  |
 | resetText | 重置按钮文案 | string | 重置 |  |
