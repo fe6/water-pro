@@ -1,4 +1,4 @@
-# [4.32.0](https://github.com/fe6/water-pro/compare/v4.7.1...v4.32.0) (2024-12-27)
+# [4.33.0](https://github.com/fe6/water-pro/compare/v4.7.1...v4.33.0) (2025-03-17)
 
 
 ### Bug Fixes
@@ -139,6 +139,7 @@
 * **cropper:** 上传对接接口 ([1385614](https://github.com/fe6/water-pro/commit/138561446f4b0747410bed2142cbd2a0a783abde))
 * **cropper:** 新增盒子宽高 ([6ac4651](https://github.com/fe6/water-pro/commit/6ac46515b97176d536e5f38166d33182439dc0d4))
 * **drawer:** 新增底部功能 ([9ed7498](https://github.com/fe6/water-pro/commit/9ed7498be6f2553ba95fd6684e429c1603e6890e))
+* **form-pro:** 新增 inlineActionInnerRow 配置 ([734ac34](https://github.com/fe6/water-pro/commit/734ac34c9f4239b024dbe88374be0d0d7d79e35c))
 * **form:** add size props ([63cba71](https://github.com/fe6/water-pro/commit/63cba7186aac0e91a2ccf85fa8395fc573c0c0b7))
 * **formpro:** 新增控制样式的属性 ([4f8f3fe](https://github.com/fe6/water-pro/commit/4f8f3fe0a866185343c5f78ef1f8244640441230))
 * **formpro:** add config one item props ([0b0d77b](https://github.com/fe6/water-pro/commit/0b0d77b67830d1b36edad5028782a621feef2df4))
