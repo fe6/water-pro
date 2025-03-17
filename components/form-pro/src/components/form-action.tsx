@@ -6,9 +6,9 @@ import type { FormProProps } from '../props';
 import type { FormProSchema } from '../types/form';
 import type { ColProps } from '../../../col';
 
-import { defineComponent, computed, PropType, toRefs } from 'vue';
+import { defineComponent, computed, PropType, toRefs, CSSProperties } from 'vue';
 import AButton from '../../../button';
-import { Col, Row } from '../../../grid';
+import { Col, Row, RowProps } from '../../../grid';
 import BasicArrow from '../../../basic-arrow';
 import PropTypes from '../../../_util/vue-types';
 import { useLocaleReceiver } from '../../../locale-provider/LocaleReceiver';
@@ -21,6 +21,10 @@ import { FormProLocale } from '../../interface';
 import zhCn from '../../locale/zh_CN';
 
 type ButtonOptions = Partial<ButtonProps> & { text: string };
+
+interface IFormProLabelRow extends RowProps {
+  style?: CSSProperties;
+}
 
 export default defineComponent({
   name: 'AFormProAction',
@@ -50,6 +54,10 @@ export default defineComponent({
     },
     actionColOptions: {
       type: Object as PropType<Partial<ColProps>>,
+      default: () => ({}),
+    },
+    inlineActionInnerRow: {
+      type: Object as PropType<Partial<IFormProLabelRow>>,
       default: () => ({}),
     },
     actionSpan: PropTypes.number.def(6),
@@ -226,7 +234,7 @@ export default defineComponent({
       }
 
       rootNode = (
-        <Row>
+        <Row {...this.inlineActionInnerRow}>
           <Col {...rootProps}>
             <div
               class={[`${this.prefixClsNew}-item-action`]}

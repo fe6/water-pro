@@ -15,7 +15,11 @@ import { isArray } from 'lodash-es';
 import PropTypes from '../../_util/vue-types';
 
 export interface IFormProLabelCol extends ColProps {
-  style?: CSSProperties;
+  style?: CSSProperties | string;
+}
+
+export interface IFormProLabelRow extends RowProps {
+  style?: CSSProperties | string;
 }
 
 export const formProProps = () => ({
@@ -153,6 +157,12 @@ export const formProProps = () => ({
   inlineActionCol: {
     type: Object as PropType<Partial<IFormProLabelCol>>,
     default: () => ({ span: 8 } as IFormProLabelCol),
+  },
+
+  // FEAT 4.0+
+  inlineActionInnerRow: {
+    type: Object as PropType<Partial<IFormProLabelRow>>,
+    default: () => ({} as IFormProLabelRow),
   },
 
   // NOTE 4.0  废弃

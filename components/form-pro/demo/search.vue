@@ -182,6 +182,11 @@ const schemas: FormProSchema[] = [
       placeholder: '请输入',
     },
   },
+  {
+    field: 'searchfield1ss',
+    component: 'Input',
+    label: '测试查询',
+  },
 ];
 
 export default defineComponent({
@@ -195,11 +200,18 @@ export default defineComponent({
       // wrapperCol: {
       //   span: 18,
       // },
-      inlineActionCol: {
-        span: 7,
-        offset: 1,
-      },
       layout: 'inline',
+      inlineCol: {
+        span: 6,
+      },
+      inlineActionCol: {
+        push: 12,
+        span: 6,
+      },
+      actionAlgin: 'right',
+      inlineActionInnerRow: {
+        style: 'justify-content: flex-end'
+      }
     });
     return {
       searchFormPro,
