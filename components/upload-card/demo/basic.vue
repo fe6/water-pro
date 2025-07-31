@@ -25,6 +25,8 @@ The simplest usage.
       :headers="headers"
       :data="{ a: 1 }"
       draggable
+      :imageWidth="50"
+      :imageHeight="50"
       @dragEnd="onDragEnd"
       accept="image/png,image/jpeg,image/gif"
     />

@@ -247,6 +247,10 @@ export default defineComponent({
                 [`${this.prefixClsNew}-btn-disabled`]: this.disabled,
               },
             ]}
+            style={{
+              width: `${this.imageWidth}px`,
+              height: `${this.imageHeight}px`,
+            }}
           >
             <Spin v-show={this.moreLoading} />
             {loadingNode}
