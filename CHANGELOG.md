@@ -1,4 +1,4 @@
-## [4.33.1](https://github.com/fe6/water-pro/compare/v4.7.1...v4.33.1) (2025-05-23)
+## [4.33.2](https://github.com/fe6/water-pro/compare/v4.7.1...v4.33.2) (2025-07-31)
 
 
 ### Bug Fixes
@@ -88,6 +88,7 @@
 * **timepicker:** value-format 不生效 ([6c764d7](https://github.com/fe6/water-pro/commit/6c764d7b69bab54c9cf65750b163140d91489cc5))
 * **ts:** 打包失败 ([e5e12fa](https://github.com/fe6/water-pro/commit/e5e12fa3a9cf69fef1b7d5e47e1513a4c17b33da))
 * **update-card:** 修复禁用状态还能拖拽及删除 ([93ebdde](https://github.com/fe6/water-pro/commit/93ebddea7e6c1440f9134a00e204920c146edd97))
+* **upload-card:** 定义图片宽高上传按钮失效问题 ([821983b](https://github.com/fe6/water-pro/commit/821983b7b4b98924e1f849d2bd13a68047ad7941))
 * **upload-card:** from-pro 重置图片还在问题 ([2026a2a](https://github.com/fe6/water-pro/commit/2026a2aac004308ef69d553bbb644be9fcb4327f))
 * **uploadCard:** 拖拽图片乱序问题 ([e9f1a8d](https://github.com/fe6/water-pro/commit/e9f1a8d6e323b3060ab7ec405fee1ebf9e4928f6))
 * **uploadcard:** 显示之后不排序 ([377408f](https://github.com/fe6/water-pro/commit/377408fe65b24cf2dc66c1cdce6959e3fed68a11))
